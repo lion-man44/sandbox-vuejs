@@ -6,12 +6,14 @@
         <tr>
           <th>Name</th>
           <th>Price</th>
+          <th>Category</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for='p in filteredProducts'>
-          <td :class='{ "soldout": !p.stocked }'>{{ p.name }}</td>
+          <td :class='{ soldout: !p.stocked }'>{{ p.name }}</td>
           <td>{{ p.price }}</td>
+          <td>{{ p.category }}</td>
         </tr>
       </tbody>
     </table>
@@ -44,9 +46,10 @@ export default {
   computed: {
     filteredProducts: function() {
       return this.products.filter((p) => {
-        return p.name.indexOf(this.searchText) !== -1 || p.price.indexOf(this.searchText) !== -1;
+        return p.name.indexOf(this.searchText) !== -1 || p.price.indexOf(this.searchText) !== -1 ||
+          p.category.indexOf(this.searchText) !== -1;
       });
-    }
+    },
   },
 }
 </script>

@@ -14987,7 +14987,7 @@ exports.default = {
       var _this = this;
 
       return this.products.filter(function (p) {
-        return p.name.indexOf(_this.searchText) !== -1 || p.price.indexOf(_this.searchText) !== -1;
+        return p.name.indexOf(_this.searchText) !== -1 || p.price.indexOf(_this.searchText) !== -1 || p.category.indexOf(_this.searchText) !== -1;
       });
     }
   }
@@ -14996,8 +14996,8 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"searchbox-template"}},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.searchText),expression:"searchText"}],attrs:{"type":"text","placeholder":"Search..."},domProps:{"value":_vm._s(_vm.searchText)},on:{"input":function($event){if($event.target.composing){ return; }_vm.searchText=$event.target.value}}}),_vm._v(" "),_c('table',[_vm._m(0),_vm._v(" "),_c('tbody',_vm._l((_vm.filteredProducts),function(p){return _c('tr',[_c('td',{class:{ "soldout": !p.stocked }},[_vm._v(_vm._s(p.name))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(p.price))])])}))])])}
-__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('thead',[_c('tr',[_c('th',[_vm._v("Name")]),_vm._v(" "),_c('th',[_vm._v("Price")])])])}]
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"searchbox-template"}},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.searchText),expression:"searchText"}],attrs:{"type":"text","placeholder":"Search..."},domProps:{"value":_vm._s(_vm.searchText)},on:{"input":function($event){if($event.target.composing){ return; }_vm.searchText=$event.target.value}}}),_vm._v(" "),_c('table',[_vm._m(0),_vm._v(" "),_c('tbody',_vm._l((_vm.filteredProducts),function(p){return _c('tr',[_c('td',{class:{ soldout: !p.stocked }},[_vm._v(_vm._s(p.name))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(p.price))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(p.category))])])}))])])}
+__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('thead',[_c('tr',[_c('th',[_vm._v("Name")]),_vm._v(" "),_c('th',[_vm._v("Price")]),_vm._v(" "),_c('th',[_vm._v("Category")])])])}]
 __vue__options__._scopeId = "data-v-1d21cd08"
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
