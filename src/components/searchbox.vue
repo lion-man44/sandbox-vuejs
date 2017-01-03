@@ -1,29 +1,22 @@
-<template>
-  <div id='searchbox-template'>
-    <input type='text' placeholder='Search...' v-model='searchText' />
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Category</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for='p in filteredProducts'>
-          <td :class='{ soldout: !p.stocked }'>{{ p.name }}</td>
-          <td>{{ p.price }}</td>
-          <td>{{ p.category }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<template lang='jade'>
+  #searchbox-template
+    input(type='text' placeholder='Search...' v-model='searchText')
+    table
+      thead
+        tr
+          th Name
+          th Price
+          th Category
+      tbody
+        tr(v-for='p in filteredProducts')
+          td(:class='{ soldout: !p.stocked }') {{ p.name }}
+          td {{ p.price }}
+          td {{ p.category }}
 </template>
 
-<style scoped>
-.soldout {
-  color: red;
-}
+<style lang='stylus' scoped>
+.soldout
+  color red
 </style>
 
 <script>
