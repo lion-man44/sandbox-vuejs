@@ -1,6 +1,9 @@
 <template lang='jade'>
   #searchbox-template
     input(type='text' placeholder='Search...' v-model='searchText')
+    p
+      input(type='checkbox' id='stock' v-model='stocked')
+      label(for='stock')= ' Only show products in stock'
     table
       thead
         tr
@@ -33,14 +36,19 @@ export default {
         {category: 'Electornics', price: '$399.99', stocked: false, name: 'iPhone 5'},
         {category: 'Electornics', price: '$199.99', stocked: true, name: 'Nexus 7'},
       ],
-      searchText: ''
+      searchText: '',
+      stocked: false
     }
   },
+
   computed: {
     filteredProducts: function() {
-      return this.products.filter((p) => {
-        return p.name.indexOf(this.searchText) !== -1 || p.price.indexOf(this.searchText) !== -1 ||
-          p.category.indexOf(this.searchText) !== -1;
+      return this.products.filter(p => {
+        const isStocked = this.stocked ? p.stocked === true : true
+        const isName = p.name.indexOf(this.searchText) !== -1;
+        const isPrice = p.price.indexOf(this.searchText) !== -1;
+        const isCategory = p.category.indexOf(this.searchText) !== -1;
+        return isStocked && (isName || isPrice || isCategory);
       });
     },
   },
