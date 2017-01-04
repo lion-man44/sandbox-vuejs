@@ -14978,7 +14978,8 @@ exports.default = {
   data: function data() {
     return {
       products: [{ category: 'Sproting Goods', price: '$49.99', stocked: true, name: 'Football' }, { category: 'Sproting Goods', price: '$9.99', stocked: true, name: 'Baseball' }, { category: 'Sproting Goods', price: '$29.99', stocked: false, name: 'Basketball' }, { category: 'Electornics', price: '$99.99', stocked: true, name: 'iPod Touch' }, { category: 'Electornics', price: '$399.99', stocked: false, name: 'iPhone 5' }, { category: 'Electornics', price: '$199.99', stocked: true, name: 'Nexus 7' }],
-      searchText: ''
+      searchText: '',
+      stocked: false
     };
   },
 
@@ -14987,7 +14988,11 @@ exports.default = {
       var _this = this;
 
       return this.products.filter(function (p) {
-        return p.name.indexOf(_this.searchText) !== -1 || p.price.indexOf(_this.searchText) !== -1 || p.category.indexOf(_this.searchText) !== -1;
+        var isStocked = _this.stocked ? p.stocked === true : true;
+        var isName = p.name.indexOf(_this.searchText) !== -1;
+        var isPrice = p.price.indexOf(_this.searchText) !== -1;
+        var isCategory = p.category.indexOf(_this.searchText) !== -1;
+        return isStocked && (isName || isPrice || isCategory);
       });
     }
   }
@@ -14996,7 +15001,7 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"searchbox-template"}},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.searchText),expression:"searchText"}],attrs:{"type":"text","placeholder":"Search..."},domProps:{"value":_vm._s(_vm.searchText)},on:{"input":function($event){if($event.target.composing){ return; }_vm.searchText=$event.target.value}}}),_vm._v(" "),_c('table',[_vm._m(0),_vm._v(" "),_c('tbody',_vm._l((_vm.filteredProducts),function(p){return _c('tr',[_c('td',{class:{ soldout: !p.stocked }},[_vm._v(_vm._s(p.name))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(p.price))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(p.category))])])}))])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"searchbox-template"}},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.searchText),expression:"searchText"}],attrs:{"type":"text","placeholder":"Search..."},domProps:{"value":_vm._s(_vm.searchText)},on:{"input":function($event){if($event.target.composing){ return; }_vm.searchText=$event.target.value}}}),_vm._v(" "),_c('p',[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.stocked),expression:"stocked"}],attrs:{"id":"stock","type":"checkbox"},domProps:{"checked":Array.isArray(_vm.stocked)?_vm._i(_vm.stocked,null)>-1:(_vm.stocked)},on:{"change":function($event){var $$a=_vm.stocked,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$c){$$i<0&&(_vm.stocked=$$a.concat($$v))}else{$$i>-1&&(_vm.stocked=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.stocked=$$c}}}}),_vm._v(" "),_c('label',{attrs:{"for":"stock"}},[_vm._v("Only show products in stock")])]),_vm._v(" "),_c('table',[_vm._m(0),_vm._v(" "),_c('tbody',_vm._l((_vm.filteredProducts),function(p){return _c('tr',[_c('td',{class:{ soldout: !p.stocked }},[_vm._v(_vm._s(p.name))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(p.price))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(p.category))])])}))])])}
 __vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('thead',[_c('tr',[_c('th',[_vm._v("Name")]),_vm._v(" "),_c('th',[_vm._v("Price")]),_vm._v(" "),_c('th',[_vm._v("Category")])])])}]
 __vue__options__._scopeId = "data-v-1d21cd08"
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
